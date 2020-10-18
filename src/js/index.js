@@ -18,6 +18,7 @@ const newStringEl = defaultEl.reduce((acc, { preview, description, original }) =
   </a>
   </li>`);
 }, '');
+
 ulRef.innerHTML = newStringEl;
 
 const imgEl = document.querySelector('.gallery__image');
