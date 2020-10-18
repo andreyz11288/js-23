@@ -68,6 +68,7 @@ document.addEventListener('keydown', eve => {
   const divCloseModal = document.querySelector('.lightbox__image');
 
   // Кнопка Esc //
+  
   if (eve.code === 'Escape') {
     isOpen()
   }
