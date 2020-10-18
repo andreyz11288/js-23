@@ -1,8 +1,13 @@
+import defaultEl from './gallery-items.js';
+import {isOpen} from './index'
 // Управление кнопками //
 
-export default document.addEventListener('keydown', eve => {
+export const keysRef = document.addEventListener('keydown', eve => {
+  
   const divCloseModal = document.querySelector('.lightbox__image');
-
+  const divEl = document.querySelector('.js-lightbox');
+  const imgEl = document.querySelector('.gallery__image');
+  
   // Кнопка Esc //
   if (eve.code === 'Escape') {
     isOpen()

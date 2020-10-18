@@ -1,9 +1,13 @@
 import defaultEl from './gallery-items.js';
-const ulRef = document.querySelector('.js-gallery');
-const divEl = document.querySelector('.js-lightbox');
-const btnEl = document.querySelector('button[data-action ="close-lightbox"]');
-const divModalEl = document.querySelector('.lightbox__content');
-const overEl = document.querySelector('.lightbox__overlay');
+
+import {ulRef, divEl, btnEl, divModalEl, overEl, } from './querySelector.js'
+// const ulRef = document.querySelector('.js-gallery');
+// const divEl = document.querySelector('.js-lightbox');
+// const btnEl = document.querySelector('button[data-action ="close-lightbox"]');
+// const divModalEl = document.querySelector('.lightbox__content');
+// const overEl = document.querySelector('.lightbox__overlay');
+
+
 const newStringEl = defaultEl.reduce((acc, { preview, description, original }) => {
   return (acc += `<li class="gallery__item">
   <a class="gallery__link" href="${original}" >
@@ -50,13 +54,14 @@ btnEl.addEventListener('click', () => {
 
 // Очистка пути после закрытия модалки//
 
-function isOpen() {
+export function isOpen() {
   const divCloseModal = document.querySelector('.lightbox__image');
   divEl.classList.remove('is-open');
   divCloseModal.alt = '';
   divCloseModal.src = '';
 }
-const closeModalEl = document.querySelector('[data-action="close-lightbox"]');
+import {closeModalEl} from './querySelector.js'
+// const closeModalEl = document.querySelector('[data-action="close-lightbox"]');
 closeModalEl.addEventListener('click', isOpen);
 
 overEl.addEventListener('click', isOpen);
@@ -64,44 +69,45 @@ overEl.addEventListener('click', isOpen);
 
 // Управление кнопками //
 
-document.addEventListener('keydown', eve => {
-  const divCloseModal = document.querySelector('.lightbox__image');
+// document.addEventListener('keydown', eve => {
+//   const divCloseModal = document.querySelector('.lightbox__image');
 
-  // Кнопка Esc //
-  
-  if (eve.code === 'Escape') {
-    isOpen()
-  }
-  if (divEl.className.includes('is-open')) {
-    const mapDefEl = defaultEl.map(value => value.original);
-    const indElNum = Number(mapDefEl.indexOf(divCloseModal.src));
+//   // Кнопка Esc //
 
-    // Кнопка влево, вверх //
-    const mapDelLight = Number(mapDefEl.length) - 1;
-    if (eve.code === 'ArrowLeft' || eve.code === 'ArrowUp') {
-      if (eve.target.className === imgEl.className) {
-        return;
-      }
-      const indLeftEl = indElNum - 1;
-      divCloseModal.src = mapDefEl[indLeftEl];
-      if (indElNum === 0) {
-        divCloseModal.src = mapDefEl[mapDelLight];
-      }
-    }
-    // Кнопка вправо, вниз //
-    if (
-      eve.code === 'ArrowRight' ||
-      eve.code === 'ArrowDown' ||
-      eve.code === 'Space'
-    ) {
-      if (eve.target.className === imgEl.className) {
-        return;
-      }
-      const indEl = indElNum + 1;
-      divCloseModal.src = mapDefEl[indEl];
-      if (indEl === mapDefEl.length) {
-        divCloseModal.src = mapDefEl[0];
-      }
-    }
-  }
-});
+//   if (eve.code === 'Escape') {
+//     isOpen()
+//   }
+//   if (divEl.className.includes('is-open')) {
+//     const mapDefEl = defaultEl.map(value => value.original);
+//     const indElNum = Number(mapDefEl.indexOf(divCloseModal.src));
+
+//     // Кнопка влево, вверх //
+//     const mapDelLight = Number(mapDefEl.length) - 1;
+//     if (eve.code === 'ArrowLeft' || eve.code === 'ArrowUp') {
+//       if (eve.target.className === imgEl.className) {
+//         return;
+//       }
+//       const indLeftEl = indElNum - 1;
+//       divCloseModal.src = mapDefEl[indLeftEl];
+//       if (indElNum === 0) {
+//         divCloseModal.src = mapDefEl[mapDelLight];
+//       }
+//     }
+//     // Кнопка вправо, вниз //
+//     if (
+//       eve.code === 'ArrowRight' ||
+//       eve.code === 'ArrowDown' ||
+//       eve.code === 'Space'
+//     ) {
+//       if (eve.target.className === imgEl.className) {
+//         return;
+//       }
+//       const indEl = indElNum + 1;
+//       divCloseModal.src = mapDefEl[indEl];
+//       if (indEl === mapDefEl.length) {
+//         divCloseModal.src = mapDefEl[0];
+//       }
+//     }
+//   }
+// });
+import { keysRef } from './key.js'
