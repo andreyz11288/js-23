@@ -1,5 +1,5 @@
 import defaultEl from './gallery-items.js';
-import {isOpen} from './index'
+import {isOpen} from './index.js'
 // Управление кнопками //
 
 export const keysRef = document.addEventListener('keydown', eve => {
