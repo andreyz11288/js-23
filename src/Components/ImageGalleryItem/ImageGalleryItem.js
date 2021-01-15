@@ -45,8 +45,10 @@ export default class ImageGalleryItem extends Component {
         this.props.resPage(true);
       }
 
-      this.setState({ status: 'pending' });
-      this.props.visible(true);
+      if (this.props.numberPage === 1) {
+        this.setState({ status: 'pending' });
+        this.props.visible(true);
+      }
       Api(this.props.onFetch, thisPage)
         .then(e => {
           if (
