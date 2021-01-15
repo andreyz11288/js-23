@@ -45,6 +45,8 @@ export default class ImageGalleryItem extends Component {
         this.props.resPage(true);
       }
 
+      this.setState({ status: 'pending' });
+      this.props.visible(true);
       Api(this.props.onFetch, thisPage)
         .then(e => {
           if (
@@ -63,6 +65,8 @@ export default class ImageGalleryItem extends Component {
             prevProps.onFetch === this.props.onFetch &&
             prevProps.numberPage < this.props.numberPage
           ) {
+            this.setState({ status: 'resolve' });
+            this.props.visible(false);
             const { gallery } = this.state;
             this.setState({ gallery: [...gallery, ...e.hits] });
             window.scrollTo({

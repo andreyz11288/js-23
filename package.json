@@ -1,8 +1,8 @@
 {
-  "name": "js-23",
+  "name": "goit-react-hw-03-phonebook",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://andreyz11288.github.io/js-23",
+  "homepage": "https://andreyz11288.github.io/goit-react-hw-03-phonebook",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.3",
