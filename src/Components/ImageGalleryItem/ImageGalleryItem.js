@@ -33,9 +33,9 @@ export default class ImageGalleryItem extends Component {
         thisPage = this.props.numberPage;
       }
 
-      if (this.props.onFetch === '' && prevState.status !== this.state.status) {
-        this.setState({ status: 'idle' });
-      }
+      // if (this.props.onFetch === '' ) {
+      //   this.setState({ status: 'idle' });
+      // }
 
       if (
         prevProps.onFetch !== this.props.onFetch &&
@@ -49,6 +49,8 @@ export default class ImageGalleryItem extends Component {
         this.setState({ status: 'pending' });
         this.props.visible(true);
       }
+
+      console.log(this.props.onFetch);
       Api(this.props.onFetch, thisPage)
         .then(e => {
           if (
@@ -82,6 +84,10 @@ export default class ImageGalleryItem extends Component {
 
           if (e.hits.length > 0) {
             this.setState({ status: 'resolve' });
+          }
+          if (this.props.onFetch === '') {
+            this.props.visible(true);
+            this.setState({ status: 'idle' });
           }
         })
         .catch(() => this.setState({ status: 'rejected' }));
